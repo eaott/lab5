@@ -70,7 +70,7 @@ SA 113475 & I & 30 & 1.521& 665531 & 147737   \\
 \end{tabular}
 \end{center}
 
-From \ref{eq:ext} and reference data for SA 113475, we arrive at the extinction coefficients:
+From Equation \ref{eq:ext} and reference data for SA 113475, we arrive at the extinction coefficients:
 \begin{align*}
 k_B&= 0.583\\
 k_V&= 0.176\\
@@ -79,14 +79,50 @@ k_I&= 0.166
 \end{align*}
 \begin{equation}
 \label{eq:ext}
-m_1-m_2=k(X_1-X_2)=-2.5\log_{10}\frac{S_1t_2}{S_2t_1}
+m_a-m_a'=k(X_a-X_a')=-2.5\log_{10}\frac{S_at_a'}{S_a't_a}
 \end{equation}
+
+
+
+With known magnitudes of a calibration star, we can use Equation \ref{eq:targetstar} to determine the magnitude of
+the target star, $m_*$.
+\begin{equation}
+\label{eq:targetstar}
+m_{rel,*}=m_*-m_r=k(X_r-X_*)-2.5\log_{10}\frac{S_*t_r}{S_rt_*}
+\end{equation}
+So relative to SA 113475, the target stars have relative magnitudes: FIXME add in intrinsic - it's ok
+\begin{center}
+\begin{tabular}{c | c | c }
+Star & Filter & $m_{rel,*}$\\
+\hline
+HD 227858 & B & -0.067 \\
+HD 227858 & V & +0.165 \\
+HD 227858 & R & +0.317  \\
+HD 227858 & I &   -0.585 \\
+
+HD 338931 & B & -1.596 \\
+HD 338931 & V & -1.295 \\
+HD 338931 & R &  -1.160\\
+HD 338931 & I & -2.190 \\
+\end{tabular}
+\end{center}
+
+k tells us what the observed magnitude (m_obs = kX + m_int)
+
 \section{Analysis}
 $S_{*,sky}=\Delta\nu{\obar{\Phi}}{\obar{f}}tA/g$
 
 
 
-
+FIXME
+We can determine the precise relationship between flux and signal for each filter as well, using Equation \ref{eq:convert}
+\begin{equation}
+S_{*,sky}=\frac{\Delta\nu \obar{\Phi}t\obar{f}A}{g}
+\label{eq:convert}
+\end{equation}
+where $\obar{f}$ is the averaged flux in the filter band, $t$ is the exposure time, $A$ is the aperture of the telescope (area at entry),
+$g$ is the gain in electrons per count, $\obar{\Phi}=\obar{ql\phi}$ is the averaged response of the system over the filter, and $\Delta\nu$ is the
+bandwidth of the filter.
 
 \section{Conclusion}
 
