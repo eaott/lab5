@@ -15,7 +15,7 @@
 \newcommand{\obar}[1]{\ensuremath{\overline{ #1 }}}
 \hypersetup{colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=red}
 \graphicspath{ {C:/Users/Evan/Desktop/} }
-\title{Determination of Magnitude and Intrinsic Flux of HD 227858 and HD 338931 from Landholt Standard SA 113475}
+\title{Determination of Magnitude and Intrinsic Flux of HD 227858 and HD 338931 from Landolt Standard SA 113475}
 \author{Evan Ott \\ UT EID: eao466}
 \date{\today}
 \setcounter{secnumdepth}{0}
@@ -28,8 +28,26 @@ we often want to have quantifiable data about stars, for example the magnitude (
 to others, either in terms of total light or broken into sections of the electromagnetic spectrum by filters. Or, we might want to
 have the flux (photon energy or number per area each second). However, besides having proper equipment, much calibration
 must take place to account for all present factors - atmospheric extinction of photons travelling at different angles
-through Earth's atmosphere, ever-present and never-present pixels in our sensor, absorption in mirrors and lenses, etc. Here, I work through calculating the magnitude and intrinsic flux (flux just outside the atmosphere) of stars HD 227858
-and HD 338931 based on the Landhold Standard star SA 113475{\huge\cite{lanholt}}. 
+through Earth's atmosphere, ever-present and never-present pixels in sensors, absorption in mirrors and lenses, etc. Here, I work through calculating the magnitude and intrinsic flux (flux just outside the atmosphere) of stars HD 227858 (see Figure \ref{fig:hd2})
+and HD 338931 (see Figure \ref{fig:hd3}) based on the Landolt Standard star SA 113475 (see Figure \ref{fig:sa})\cite{landolt}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.75]{hd2.jpg}
+\caption{\label{fig:hd2} HD 227585 and surrounding stars, colored by linear scale in number of counts per pixel.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.75]{hd3.jpg}
+\caption{\label{fig:hd3} HD 338931 and surrounding stars, colored by linear scale in number of counts per pixel.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.75]{sa1.jpg}
+\caption{\label{fig:sa} Landolt Standard star SA 113475 and surrounding stars, colored by linear scale in number of counts per pixel.}
+\end{figure}
 
 \begin{table}
 \begin{center}
@@ -50,8 +68,8 @@ flux per wavelength to be observed through the filter for a 0-magnitude star in 
 \end{table}
 
 \section{Methods}
-Using the 16" telescope in Robert Lee Moore Hall at the University of Texas at Austin, I and my classmates used a 1024x1024 CCD imaging
-system, coupled with a selection of Johnson-type filters for the B, V, R, and I parts of the spectrum. Parameters of the filters can be found in Table
+Using the 16" telescope at Robert Lee Moore Hall at the University of Texas at Austin, I and my classmates used a 1024x1024 CCD imaging
+system, coupled with a selection of Johnson-type filters for the B, V, R, and I parts of the spectrum to analyse HD 227858 and HD 338931. Parameters of the filters can be found in Table
 \ref{table:filters}. After taking dark frame and flat frame images (to account for the CCD's inherent background response to temperature and
 non-uniform sensitivity, respectively), we were able to use the IRAF suite of programs to isolate the count (in Arbitrary Data Units [ADU])
 in the image due to photons from the stars of interest and the count associated with background light from other sources. These data
@@ -134,13 +152,13 @@ m_*-m_r=k(X_r-X_*)-2.5\log_{10}\frac{S_*t_r}{S_rt_*}
 \begin{tabular}{c | c}
 Filter & Intrinsic Magnitude \\
 \hline
-B & 11.362 \\
-V &  10.304\\
-R & 9.736\\
-I & 9.208
+B & 11.362 $\pm$ 0.0006\\
+V &  10.304 $\pm$ 0.0004\\
+R & 9.736 $\pm$ 0.0006\\
+I & 9.208 $\pm$ 0.0008
 \end{tabular}
 \end{center}
-\caption{Intrinsic magnitude of SA 113475 from \huge FIXME FIXME FIXME}
+\caption{Intrinsic magnitude of SA 113475 from Landolt \cite{landolt}.}
 \label{table:SAmag}
 \end{table}
 
@@ -204,7 +222,7 @@ coupled with Equation \ref{eq:signalflux}, we arrive at the signal responses in 
 
 \begin{equation}
 \label{eq:signalflux}
-S_*=\frac{\Delta\nu{\obar{\Phi}}\frac{hc}{\lambda_0}}{g}n_\gamma=R\cdot n_\gamma
+S_*=\frac{\Delta\nu{\obar{\Phi}}t{\obar{f_*}}A}{g}=\frac{\Delta\nu{\obar{\Phi}}\frac{hc}{\lambda_0}}{g}n_\gamma=R\cdot n_\gamma
 \end{equation}
 
 \begin{table}
@@ -224,10 +242,9 @@ I & 0.0076
 \end{table}
 
 A handy consequence of Equation \ref{eq:signalflux} is that using the same filter and telescope setup for two
-stars at the same exposure time gives $\frac{S_1}{S_2}=\frac{f_1}{f_2}$. As such, we can easly calculate the measured flux
+stars with the same exposure time gives $\frac{S_1}{S_2}=\frac{f_1}{f_2}$. As such, we can easly calculate the measured flux
 of each target star for each filter (see Table \ref{table:fluxes}).
 
-% $A=1280cm^2$ for the telescope, $t=30s$ for our dataset, and 
 \begin{table}
 \begin{center}
 \begin{tabular}{c | c | c}
@@ -243,7 +260,7 @@ HD 338931 &V & 4.66E-9\\
 HD 338931 &R & 3.35E-9\\
 HD 338931 & I & 1.04E-8\\
 \end{tabular}
-\caption{FIXME}
+\caption{Measured flux of target stars based on the measured flux of SA 113475.}
 \label{table:fluxes}
 \end{center}
 \end{table}
@@ -257,7 +274,7 @@ intrinsic flux for each star as stated in Table \ref{table:realflux}.
 
 \begin{equation}
 \label{eq:realflux}
-F=f10^{\frac{kX}{2.5}}
+F=f\cdot10^{kX/2.5}
 \end{equation}
 
 \begin{table}
@@ -274,31 +291,72 @@ HD 338931 & B & 9.766 & 5.69E-8\\
 HD 338931 & V & 9.009  & 2.47E-8\\
 HD 338931 & R & 8.576 & 1.54E-8\\
 HD 338931 & I & 7.018 & 5.38E-8\\
-SA 113475 & B & 11.362 & 1.13E-8\\
-SA 113475 & V & 10.304 & 7.14E-9\\
-SA 113475 & R  & 9.736 & 5.10E-9\\
-SA 113475 & I  & 9.208 & 7.15E-9\\
+SA 113475 & B & 11.362* & 1.13E-8\\
+SA 113475 & V & 10.304* & 7.14E-9\\
+SA 113475 & R  & 9.736* & 5.10E-9\\
+SA 113475 & I  & 9.208* & 7.15E-9\\
 \end{tabular}
-\caption{FIXME}
+\caption{Final results (minus uncertainties) for the magnitude and flux of each target star in each filter band. *Values are from \cite{landolt}.}
 \label{table:realflux}
 \end{center}
 \end{table}
 
 
 \section{Analysis}
-
-
-
-
+From Equation \ref{eq:targetstar}, we can calculate the uncertainty in target star magnitudes, target star fluxes, and atmospheric extinction coefficients.
+For general function $f=f(x_1, x_2, ..., x_n)$, we expect: $$\sigma_f^2=\Sigma_{i=1}^{n}(\partial_{x_i}f(x_1, x_2, ..., x_n)\sigma_{x_i})^2$$
+Thus for magnitudes of target stars, we have:
+\begin{equation*}
+\sigma_{m_1}^2=\sigma_{m_2}^2+6.25\left(\left(\frac{\sigma_{t_1}}{t_1}\right)^2+\left(\frac{\sigma_{S_1}}{S_1}\right)^2
++\left(\frac{\sigma_{t_2}}{t_2}\right)^2+\left(\frac{\sigma_{S_2}}{S_2}\right)^2\right) + 4k^2\sigma_X^2+\sigma_k^2(X_1-X_2)^2
+\end{equation*}
+For extinction coefficients, we have:
+\begin{equation*}
+\sigma_k^2/6.25=\left(\frac{\sigma_{t_1}}{t_1}\right)^2+\left(\frac{\sigma_{S_1}}{S_1}\right)^2
++\left(\frac{\sigma_{t_2}}{t_2}\right)^2+\left(\frac{\sigma_{S_2}}{S_2}\right)^2
++\log_{10}\left(\frac{S_1t_2}{S_2t_1}\right)(X_1-X_2)^{-2}(\sigma_{X_1}^2+\sigma_{X_2}^2)
+\end{equation*}
+For flux, we arrive at:
+\begin{equation*}
+\sigma_{f_1}^2=f_1^2\left[
+\frac{\sigma_{f_2}^2}{f_2^2}+\frac{\ln10}{6.25}\left(
+\sigma_{m_1}^2+\sigma_{m_2}^2+\sigma_k^2(X_1-X_2)^2+k^2(\sigma_{X_1}^2+\sigma_{X_2}^2)
+\right)
+\right]
+\end{equation*}
+And finally, for system response, we know $nR=S$ and $n=\frac{fAt\lambda_0}{hc}$, so we arrive at
+\begin{align*}
+\sigma_R^2=&\frac{\sigma_S^2}{n^2}+\frac{S^2\sigma_n^2}{n^4} \\
+\sigma_n^2=&n^2\left(\frac{\sigma_f^2}{f^2}+\frac{\sigma_A^2}{A^2}+\frac{\sigma_t^2}{t^2}\right)\\
+\sigma_S^2=&S
+\end{align*}
+For our known uncertainties, we have the uncertainty in magnitude of SA 113475 from the literature, $t=30s$,
+$\sigma_t\approx0.001s$,
+$A=1280cm^2$,
+$\sigma_A\approx.5\textrm{cm}^2$,
+$\sigma_X\approx0.01$, and $\sigma_S^2=S$. This and data above are sufficient to calculate the error in $k$ for each filter,
+which can then be used to calculate the error in magnitudes and flux (each by starting with known error in measurement of stars).
 
 \section{Conclusion}
+With magnitude of HD 227858 having an accepted value of $B=11.20\pm0.05,~V=10.76\pm0.06$ \cite{hd2}, with the observed value from the RLM
+telescope for $B$ within two standard deviations but $V$ is not within 4.5$\sigma_V$, surely there must be unaccounted for sources of error,
+potentially including human error in processing the raw data or collecting the original images. To be fair, without full calculation
+of error in my measurement which I have detailed but not completed, it is entirely possible that the standard error on my measurement
+is sufficiently large as to account for this difference due simply to uncertainty. However, with accepted values $B=9.72,~V=9.14$\cite{hd3}
+for HD 338931, the observed values are within 1\% and 1.5\% respectively (no error given in \cite{hd3}), it would appear likely that
+the observed values here are indeed consistent.
 
-
-
-
-
+This shows that although the RLM telescope is in the heart of air- and light-polluted Austin, Texas and is miniscule compared to UT's own
+telescopes at the McDonald Observatory, real, workable data is attainable with the right mathematical framework. Furthermore, continuing
+to take measurements of additional stars would help in calibrating results (rather than basing the extinction coefficient for a filter
+on two reduced samples).
 
 \begin{thebibliography}{9}
+\bibitem{hd2} H\o{t}, E., et al. ``The Tycho-2 catalogue of the 2.5 million brightest stars''. {\emph{Astronomy and Astrophysics}} v.355, p.L27-L30. (2000)
+\bibitem{landolt} Landolt, A.U. ``{\emph{UBVRI}} Photometric Standard Stars Around the Celestial Equator: Updates and Additions''. {\emph{The
+Astronomical Journal}}. {\bf{137}} 4186. (2009) \url{http://iopscience.iop.org/1538-3881/137/5/4186}
+\bibitem{hd3} Reed, B.C. ``Catalog of Galactic OB Stars''. {\emph{The Astronomical Journal}}. {\bf{125}} 2531. (2003)
+\url{http://iopscience.iop.org/1538-3881/125/5/2531/}
 
 \end{thebibliography}
 
